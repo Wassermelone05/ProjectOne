@@ -1,0 +1,24 @@
+# Konfiguration des Gold-TradingBots
+symbol: "GC=F"          # Gold-Futures (Yahoo). Alternativen: "GLD" (ETF), "XAUUSD=X"
+interval: "1d"          # 1d, 1h, 30m, 15m ... (Intraday bei Yahoo nur begrenzte Historie)
+period: "5y"            # Historie für den Backtest
+
+strategy:
+  name: "sma_crossover"
+  fast: 20              # kurzer gleitender Durchschnitt
+  slow: 50              # langer gleitender Durchschnitt
+  allow_short: false    # true = auch Short-Positionen
+
+risk:
+  initial_cash: 10000.0
+  risk_fraction: 0.95   # Anteil des Kapitals pro Position
+  stop_loss_pct: 0.05   # 5 % Stop-Loss (0 = aus)
+  take_profit_pct: 0.0  # 0 = aus
+
+costs:
+  fee_pct: 0.0005       # 0,05 % Gebühr pro Trade
+  slippage_pct: 0.0002  # 0,02 % Slippage
+
+paper:
+  state_file: "state/paper_state.json"
+  poll_seconds: 3600    # wie oft im Paper-Modus neue Kurse geholt werden
